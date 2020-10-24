@@ -1,6 +1,5 @@
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    binding.pry
     # text length
     max = 255
     record.errors.add(attribute, :too_long, count: max) if value.length > max

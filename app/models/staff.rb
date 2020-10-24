@@ -15,7 +15,7 @@ class Staff < ApplicationRecord
     presence: true,
     email: { allow_blank: true }
 
-  VALID_PASSWORD_REGEX = /\A[\W\-]+\z/
+  VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
   validates :password,
     presence: true,
     length: { minimum: 8 },
