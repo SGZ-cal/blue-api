@@ -2,7 +2,7 @@
   ja:
     activerecord:
       attributes:
-        staff:
+        user:
           name: 名前
           email: メールアドレス
           password: パスワード
@@ -112,6 +112,14 @@
         hour: 時
         day: 日
         month: 月
+        year: 年
+      periods:
+        second: 秒
+        minute: 分
+        hour: 時間
+        day: 日
+        week: 週間
+        month: ヶ月
         year: 年
     errors:
       format: "%{attribute}%{message}"

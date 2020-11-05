@@ -1,10 +1,11 @@
 require "validator/email_validator"
 
-class Staff < ApplicationRecord
+class User < ApplicationRecord
+
+  include UserAuth:: Tokenizable
+  before_validation :downcase_email
   # gem bcrypt
   has_secure_password
-
-  before_validation :downcase_email
 
   # validates
   validates :name,
@@ -37,8 +38,12 @@ class Staff < ApplicationRecord
 
   # 自分以外の同じemailのアクティブなユーザーがいる場合にtrueを返す
   def email_activated?
-    staffs = Staff.where.not(id: id)
-    staffs.find_activated(email).present?
+    users = User.where.not(id: id)
+    users.find_activated(email).present?
+  end
+
+  def my_json
+    as_json(only: [:id, :name, :email, :created_at])
   end
 
   private
